@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ReactModal from 'react-modal';
+import ChecklistButton from "../../components/ChecklistButton";
 import CreateChecklistModalForm from '../../components/modals/CreateChecklistModalForm';
 import { getDataFromLocalStorage, saveChecklistData } from "../../utils/LocalStorage";
 
@@ -129,18 +130,14 @@ function RenderRecentChecklistsData(__RecentChecklistsObject) {
   } else {
     return (
       <div className="recent-checklists-container" style={RecentChecklistsWrapperStyle}>
-        {__RecentChecklistsObject.checklistData.map((checklist_data, index) => {
-          return (
-            <button className="outline-btn recent-checklist-button border-color-purple-900 color-purple-900"
-              key={index}
-              style={RecentChecklistButtonStyle}
-            >
-              <div className="recent-checklist-button__inner-content p-top-2 p-bottom-2">
-                <span className="recent-checklist-title">{checklist_data.checklist_title}</span>
-              </div>
-            </button>
-          )
-        })}
+        {__RecentChecklistsObject.checklistData.map((checklist_data, index) => (
+          <ChecklistButton 
+            key={index}
+            checklist_title={checklist_data.checklist_title}
+            checklist_description={checklist_data.checklist_description}
+            checklist_labels={checklist_data.checklist_labels}
+          />
+        ))}
       </div>
     )
   }
