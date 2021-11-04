@@ -5,7 +5,7 @@ const RecentChecklistButtonStyle = {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'flex-start'
-}
+};
 
 export default function ChecklistButton(__ChecklistButtonDataObject) {
   return (

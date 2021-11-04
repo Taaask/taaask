@@ -13,16 +13,12 @@ const RecentChecklistsWrapperStyle = {
   alignItems: 'stretch'
 };
 
-const RecentChecklistButtonStyle = {
-  width: '180px'
-}
-
 const CTAButtonsWrapper = {
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
   gap: '0.8em'
-}
+};
 
 ReactModal.setAppElement('#root');
 export default function RecentlyCreatedChecklists() {
