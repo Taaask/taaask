@@ -25,35 +25,15 @@ const CTAButtonsWrapper = {
 
 ReactModal.setAppElement('#root');
 export default function RecentlyCreatedChecklists() {
-  const [recentChecklistData, setRecentChecklistData] = useState([]);
-  if (getDataFromLocalStorage('checklists') !== null) {
-    setRecentChecklistData(getDataFromLocalStorage('checklists'));
-  }
+  const [recentChecklistData, setRecentChecklistData] = useState(getDataFromLocalStorage('checklists'));
   const [createNewChecklistModalState, setCreateNewChecklistModalState] = useState(false);
   return (
     <div className="recently-created-checklists-container">
       {/* recently created checklists */}
-      <div className="recent-checklists-wrapper m-top-5" style={RecentChecklistsWrapperStyle}>
-        {Array(recentChecklistData).map((checklist_data, index) => {
-          if (recentChecklistData.length === 0) {
-            return (
-              <h3 className="neutral-gray-400" key={index}>You don't have any recently created checklist. Create a new checklist now 🚀</h3>
-            )
-          } else {
-            return (
-              <button className="outline-btn recent-checklist-button border-color-purple-900 color-purple-900" 
-                key={index} 
-                style={RecentChecklistButtonStyle}
-              >
-                <div className="recent-checklist-button__inner-content p-top-2 p-bottom-2">
-                  <span className="recent-checklist-title">{checklist_data.checklist_title}</span>
-                </div>
-              </button>
-            )
-          }
-        })}
+      <div className="recent-checklists-wrapper m-top-5">
+        <RenderRecentChecklistsData checklistData={recentChecklistData} />
         {/* create new checklist button */}
-        <button className="primary-btn bg-color-purple-900"
+        <button className="primary-btn bg-color-purple-900 m-top-3"
           onClick={() => setCreateNewChecklistModalState(true)}
         >
           <div className="create-new-button-inner-content">
@@ -95,8 +75,13 @@ export default function RecentlyCreatedChecklists() {
                   'checklist_description': checklistDescription,
                   'checklist_labels': checklistLabels
                 };
-                saveChecklistData(newChecklistObject, 'checklists');
-                setCreateNewChecklistModalState(false);
+                if (saveChecklistData(newChecklistObject, 'checklists')) {
+                  setRecentChecklistData(getDataFromLocalStorage('checklists'));
+                  setCreateNewChecklistModalState(false);
+                } else {
+                  alert(`some error occurred while create the checklist
+                         ChecklistTitle=${checklistTitle} (isSaved=false)`); 
+                }
               }
             }}
           >
@@ -111,4 +96,52 @@ export default function RecentlyCreatedChecklists() {
       </ReactModal>
     </div>
   )
+}
+
+// function renderRecentChecklists(recentChecklistsDataObject) {
+//   if (!recentChecklistsDataObject) {
+//     return (
+//       <h3 className="neutral-gray-400">You don't have any recently created checklist. Create a new checklist now 🚀</h3>
+//     )
+//   } else {
+//     recentChecklistsDataObject.map((checklist_data, index) => {
+//       console.log(checklist_data);
+//       return (
+//         <button className="outline-btn recent-checklist-button border-color-purple-900 color-purple-900"
+//           key={index}
+//           style={RecentChecklistButtonStyle}
+//         >
+//           <div className="recent-checklist-button__inner-content p-top-2 p-bottom-2">
+//             <span className="recent-checklist-title">{checklist_data.checklist_title}</span>
+//           </div>
+//         </button>
+//       )
+//     })
+//   }
+// }
+
+function RenderRecentChecklistsData(__RecentChecklistsObject) {
+  console.log(__RecentChecklistsObject.checklistData)
+  if (__RecentChecklistsObject.checklistData === null) {
+    return (
+      <h3 className="neutral-gray-400">You don't have any recently created checklist. Create a new checklist now 🚀</h3>
+    )
+  } else {
+    return (
+      <div className="recent-checklists-container" style={RecentChecklistsWrapperStyle}>
+        {__RecentChecklistsObject.checklistData.map((checklist_data, index) => {
+          return (
+            <button className="outline-btn recent-checklist-button border-color-purple-900 color-purple-900"
+              key={index}
+              style={RecentChecklistButtonStyle}
+            >
+              <div className="recent-checklist-button__inner-content p-top-2 p-bottom-2">
+                <span className="recent-checklist-title">{checklist_data.checklist_title}</span>
+              </div>
+            </button>
+          )
+        })}
+      </div>
+    )
+  }
 }

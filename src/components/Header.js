@@ -27,12 +27,26 @@ export default function Header() {
           gap: '0.8em'
         }}
       >
-        <button className="primary-btn bg-color-purple-900" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.6em' }}>
-          <FeatherIcons icon="tag" />
-          Manage Labels
+        <button className="primary-btn bg-color-purple-900" 
+          style={{ 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center', 
+            gap: '0.6em' 
+          }}
+          >
+            <FeatherIcons icon="tag" /> Manage Labels
         </button>
-        <button className="outline-btn border-color-purple-900 color-purple-900" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.6em' }}>
-          <FeatherIcons icon="github" /> Support The DesignSystems
+        <button className="outline-btn border-color-purple-900 color-purple-900" 
+          style={{ 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center', 
+            gap: '0.6em' 
+          }}
+          onClick={() => window.open('https://www.github.com/DesignSystemsOSS')}
+          >
+            <FeatherIcons icon="github" /> Support The DesignSystems
         </button>
       </div>
     </div>
