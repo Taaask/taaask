@@ -4,3 +4,7 @@
   margin-left: auto;
   max-width: 1400px;
 }
+
+*:focus {
+  outline: none !important;
+}

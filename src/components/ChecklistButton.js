@@ -1,3 +1,6 @@
+import { useState } from "react";
+import ReactModal from 'react-modal';
+import ChecklistTasks from "./modals/ChecklistTasks";
 
 // styling objects
 const RecentChecklistButtonStyle = {
@@ -8,8 +11,11 @@ const RecentChecklistButtonStyle = {
 };
 
 export default function ChecklistButton(__ChecklistButtonDataObject) {
+  const [checklistTaskModalState, setChecklistTaskModalState] = useState(false);
   return (
-    <button className="outline-btn recent-checklist-button border-color-purple-900 color-purple-900">
+    <button className="outline-btn recent-checklist-button border-color-white color-purple-900 shadow"
+      onClick={() => setChecklistTaskModalState(true)}
+    >
       <div className="recent-checklist-button__inner-content p-top-2 p-bottom-2"
         style={RecentChecklistButtonStyle}
       >
@@ -19,6 +25,34 @@ export default function ChecklistButton(__ChecklistButtonDataObject) {
         <RenderChecklistLabels 
           checklist_labels={__ChecklistButtonDataObject.checklist_labels} />
       </div>
+      <ReactModal
+        isOpen={checklistTaskModalState}
+        onRequestClose={() => setChecklistTaskModalState(false)}
+        style={{
+          overlay: {
+            backgroundColor: 'var(--color-purple-700)'
+          },
+          content: {
+            width: '60%',
+            height: 'fit-content',
+            padding: '1.6em',
+            margin: 'auto',
+            boxShadow: '0px 6px 20px #00000045'
+          }
+        }}
+      >
+        <ChecklistTasks 
+          checklist_title={__ChecklistButtonDataObject.checklist_title}
+          checklist_description={__ChecklistButtonDataObject.checklist_description}
+          checklist_labels={<RenderChecklistLabels checklist_labels={__ChecklistButtonDataObject.checklist_labels} />}
+          checklist_labels_data={__ChecklistButtonDataObject.checklist_labels}
+        />
+        <button className="text-btn text-btn__danger m-top-3"
+          onClick={() => setChecklistTaskModalState(false)}
+        >
+          Back
+        </button>
+      </ReactModal>
     </button>
   )
 }
@@ -41,21 +75,21 @@ function RenderChecklistLabels({checklist_labels}) {
       <p className="color-green-800 m-top-2">NO LABELS ADDED</p>
     )
   } 
-
   // if labels string is present - rendering labels logic
   // operation 01 - modifying string input keep it consistent
   // changing all the (, ) to (,)
   let checklistLabelsArray =  checklist_labels.split(',');
-  // removing start/end spaces from the elements
 
   // rendering labels in the checklist-button
   return (
     <div className="checklist-label-items-wrapper m-top-3" style={{
       display: 'grid',
-      gridTemplateColumns: 'auto auto auto',
+      flexDirection: 'row',
+      gridTemplateColumns: 'auto auto auto auto auto',
       alignItems: 'center',
       gap: '0.4em',
-      rowGap: '0.4em'
+      rowGap: '0.4em',
+      width: 'fit-content'
     }}
       >
         {checklistLabelsArray.map((checklist_label_item, index) => (
