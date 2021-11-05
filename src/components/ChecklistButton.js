@@ -13,7 +13,7 @@ const RecentChecklistButtonStyle = {
 export default function ChecklistButton(__ChecklistButtonDataObject) {
   const [checklistTaskModalState, setChecklistTaskModalState] = useState(false);
   return (
-    <button className="outline-btn recent-checklist-button border-color-purple-900 color-purple-900"
+    <button className="outline-btn recent-checklist-button border-color-purple-900 color-purple-900 shadow"
       onClick={() => setChecklistTaskModalState(true)}
     >
       <div className="recent-checklist-button__inner-content p-top-2 p-bottom-2"
@@ -47,6 +47,11 @@ export default function ChecklistButton(__ChecklistButtonDataObject) {
           checklist_labels={<RenderChecklistLabels checklist_labels={__ChecklistButtonDataObject.checklist_labels} />}
           checklist_labels_data={__ChecklistButtonDataObject.checklist_labels}
         />
+        <button className="text-btn text-btn__danger m-top-3"
+          onClick={() => setChecklistTaskModalState(false)}
+        >
+          Back
+        </button>
       </ReactModal>
     </button>
   )
@@ -78,8 +83,9 @@ function RenderChecklistLabels({checklist_labels}) {
   // rendering labels in the checklist-button
   return (
     <div className="checklist-label-items-wrapper m-top-3" style={{
-      display: 'flex',
+      display: 'grid',
       flexDirection: 'row',
+      gridTemplateColumns: 'auto auto auto auto auto',
       alignItems: 'center',
       gap: '0.4em',
       rowGap: '0.4em',

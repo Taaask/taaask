@@ -7,7 +7,7 @@ import { getDataFromLocalStorage, saveChecklistData } from "../../utils/LocalSto
 // styling objects
 const RecentChecklistsWrapperStyle = {
   display: 'grid',
-  gridTemplateColumns: 'auto auto auto auto auto',
+  gridTemplateColumns: 'auto auto auto',
   width: 'fit-content',
   gap: '1.2em',
   alignItems: 'stretch'
