@@ -27,9 +27,6 @@ export default function RecentlyCreatedChecklists() {
   return (
     <div className="recently-created-checklists-container">
       {/* recently created checklists */}
-      <div className="recent-checklists-wrapper m-top-5">
-        <RenderRecentChecklistsData checklistData={recentChecklistData} />
-        {/* create new checklist button */}
         <button className="primary-btn bg-color-purple-900 m-top-3"
           onClick={() => setCreateNewChecklistModalState(true)}
         >
@@ -37,6 +34,9 @@ export default function RecentlyCreatedChecklists() {
             ➕ New Checklist
           </div>
         </button>
+      <div className="recent-checklists-wrapper m-top-5">
+        <RenderRecentChecklistsData checklistData={recentChecklistData} />
+        {/* create new checklist button */}
       </div>
       <ReactModal
         isOpen={createNewChecklistModalState}
@@ -76,7 +76,7 @@ export default function RecentlyCreatedChecklists() {
                   setRecentChecklistData(getDataFromLocalStorage('checklists'));
                   setCreateNewChecklistModalState(false);
                 } else {
-                  alert(`some error occurred while create the checklist
+                  alert(`some error occurred while creating the checklist
                          ChecklistTitle=${checklistTitle} (isSaved=false)`); 
                 }
               }
@@ -121,7 +121,7 @@ function RenderRecentChecklistsData(__RecentChecklistsObject) {
   console.log(__RecentChecklistsObject.checklistData)
   if (__RecentChecklistsObject.checklistData === null) {
     return (
-      <h3 className="neutral-gray-400">You don't have any recently created checklist. Create a new checklist now 🚀</h3>
+      <h3 className="neutral-gray-400 m-x-auto" style={{ width: 'fit-content' }}>You don't have any recently created checklist. Create a new checklist now 🚀</h3>
     )
   } else {
     return (

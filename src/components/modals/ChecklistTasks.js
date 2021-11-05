@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import ReactModal from 'react-modal';
 
 // styling objects
@@ -16,6 +16,13 @@ const CTAButtonsWrapper = {
 export default function ChecklistTasks(__ChecklistDetails) {
   const [editChecklistDetailsModeState, setEditChecklistDetailsModeState] = useState('no-edit-mode');
   const [discardConfirmationModalState, setDiscardConfirmationModalState] = useState(false);
+  const [checklistTitle, setChecklistTitle] = useState(__ChecklistDetails.checklist_title);
+
+  // useEffect hook to manage and render real-time title updates
+  useEffect(() => {
+    setChecklistTitle(__ChecklistDetails.checklist_title);
+  }, [__ChecklistDetails.checklist_title]);
+
   if (editChecklistDetailsModeState === 'no-edit-mode') {
     return (
       <div className="checklist-tasks-details-container">
@@ -27,7 +34,7 @@ export default function ChecklistTasks(__ChecklistDetails) {
             justifyContent: 'space-between'
           }}
         >
-          <h1 className="color-purple-900">{__ChecklistDetails.checklist_title}</h1>
+          <h1 className="color-purple-900">{checklistTitle}</h1>
           <div className="cta-buttons-wrapper"
             style={{
               display: 'flex',
@@ -56,7 +63,7 @@ export default function ChecklistTasks(__ChecklistDetails) {
             justifyContent: 'space-between'
           }}
         >
-          <h1 className="color-purple-900">Edit / {__ChecklistDetails.checklist_title}</h1>
+          <h1 className="color-purple-900">Edit / {checklistTitle}</h1>
           <div className="cta-buttons-wrapper"
             style={{
               display: 'flex',
@@ -84,7 +91,8 @@ export default function ChecklistTasks(__ChecklistDetails) {
               className="m-top-2"
               placeholder="Title of the checklist"
               style={InputStyle}
-              defaultValue={__ChecklistDetails.checklist_title} />
+              defaultValue={__ChecklistDetails.checklist_title} 
+              onChange={(currentChecklistTitleValue) => setChecklistTitle(currentChecklistTitleValue.target.value)} />
           </div>
           <div className="edit-checklist-title-input-wrapper m-top-4">
             <p className="neutral-gray-900">Description</p>

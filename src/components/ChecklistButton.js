@@ -13,7 +13,7 @@ const RecentChecklistButtonStyle = {
 export default function ChecklistButton(__ChecklistButtonDataObject) {
   const [checklistTaskModalState, setChecklistTaskModalState] = useState(false);
   return (
-    <button className="outline-btn recent-checklist-button border-color-purple-900 color-purple-900 shadow"
+    <button className="outline-btn recent-checklist-button border-color-white color-purple-900 shadow"
       onClick={() => setChecklistTaskModalState(true)}
     >
       <div className="recent-checklist-button__inner-content p-top-2 p-bottom-2"
