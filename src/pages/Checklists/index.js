@@ -1,4 +1,5 @@
 import RecentlyCreatedChecklists from "./RecentlyCreatedChecklists";
+import { Link } from 'react-router-dom';
 
 // styling objects
 const HomeViewTopHeaderWrapperStyle = {
@@ -18,6 +19,9 @@ const CTAButtonsWrapper = {
 export default function Checklists() {
 	return (
 		<div className="view checklists">
+			<Link to="/">
+				<button className="m-top-3 outline-btn">Back to home</button>
+			</Link>
 			<div className="checklists-view-top-header-wrapper m-top-2" style={HomeViewTopHeaderWrapperStyle}>
 				<h3 className="checklists-view-title">Home / Checklists</h3>
 				<div className="cta-buttons-wrapper" style={CTAButtonsWrapper}>
