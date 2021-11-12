@@ -42,6 +42,7 @@ export default function ChecklistButton(__ChecklistButtonDataObject) {
         }}
       >
         <ChecklistTasks 
+          checklist_key={__ChecklistButtonDataObject.key}
           checklist_title={__ChecklistButtonDataObject.checklist_title}
           checklist_description={__ChecklistButtonDataObject.checklist_description}
           checklist_labels={<RenderChecklistLabels checklist_labels={__ChecklistButtonDataObject.checklist_labels} />}
