@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
-import { getUserDetails } from '../utils/LocalStorage';
+import { RenderUsername } from '../components/RenderUserData';
 
 export default function Header() {
-  const UserDetails = getUserDetails()[1];
   return (
     <div className="view header p-top-6 p-bottom-3" 
       style={{
@@ -31,7 +30,7 @@ export default function Header() {
             }}
           >
             <i className="fas fa-user"></i>
-            {UserDetails.username}
+            <RenderUsername />
           </button>
         </Link>
       </div>

@@ -4,10 +4,12 @@ export default function Footer() {
     <div className="footer" style={{
       position: 'absolute',
       bottom: '0',
+      width: '100%',
       height: '50px',
       display: 'flex',
       flexDirection: 'row',
-      alignItems: 'center'
+      alignItems: 'center',
+      justifyContent: 'center'
     }}>
       <span className="m-left-4" style={{ fontSize: '14px' }}>
         Copyrights &copy; {new Date().getFullYear()} / Taaask and it's parent organization 
