@@ -7,6 +7,8 @@ import UserDetails from './pages/UserDetails';
 import './styles/index.css';
 import Footer from './components/Footer';
 import Profile from './pages/Profile';
+import KanbanDashboard from './pages/KanbanDashboard';
+import Notes from './pages/Notes';
 
 export default function App() {
   checkLocalStorageUserDetails();
@@ -19,6 +21,8 @@ export default function App() {
 	  		  <Route path="/checklists" element={<Checklists />} />
           <Route path="/user-details" element={<UserDetails />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/kan-bans" element={<KanbanDashboard />} />
+          <Route path="/notes" element={<Notes />} />
 	  	  </Routes>
         <Footer />
       </BrowserRouter>
