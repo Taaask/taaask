@@ -45,9 +45,9 @@ export default function Home() {
       >
       <div className="main-header-content">
         <div className="home-title-wrapper m-top-4">
-          <h1 className="font-sans">
+          <h1 className="font-sans" style={{ width: '600px' }}>
             <RenderGreetingsAccordingToTimeSlots /> <span className="color-purple-900"><RenderUsername /></span>, 
-            <br />Hope you're doing good today!</h1>
+            Hope you're doing good today!</h1>
             <p className="neutral-gray-700 m-top-2">Currently in <b className="color-green-900"><RenderWorkspace /></b></p>
         </div>
           <div className="content-options-wrapper m-top-6">
@@ -102,7 +102,7 @@ function RenderGreetingsAccordingToTimeSlots() {
     return (
       <span>Good Evening 🌆</span>
     )
-  } else if ((new Date().getHours()) >= 22 && (new Date().getHours()) <= 3) {
+  } else if ((new Date().getHours()) >= 22 || (new Date().getHours()) <= 3) {
     return (
       <span>You're staying up late, hope you're working on something 🌙</span>
     )
