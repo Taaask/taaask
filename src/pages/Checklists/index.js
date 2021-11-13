@@ -20,12 +20,12 @@ export default function Checklists() {
 	return (
 		<div className="view checklists">
 			<Link to="/">
-				<button className="m-top-3 outline-btn">Back to home</button>
+				<button className="m-top-1 outline-btn">
+					<i className="fas fa-arrow-left"></i>
+				</button>
 			</Link>
 			<div className="checklists-view-top-header-wrapper m-top-2" style={HomeViewTopHeaderWrapperStyle}>
 				<h3 className="checklists-view-title">Home / Checklists</h3>
-				<div className="cta-buttons-wrapper" style={CTAButtonsWrapper}>
-				</div>
 			</div>
 			{/* recent checklists section */}
 			<div className="recent-checklists-section m-top-5">
