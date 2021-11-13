@@ -50,11 +50,11 @@ export default function Profile() {
             <h1 className="color-purple-900">{getDataFromLocalStorage('checklists').length}</h1>
           </div>
           <div className="user-statistics-checklists card border-neutral-gray-200" style={{ width: 'fit-content' }}>
-            <h4 className="neutral-gray-800">Number of checklists in use</h4>
+            <h4 className="neutral-gray-800">Number of Notes in use</h4>
             <h3 className="neutral-gray-400">feature under development ⚙️</h3>
           </div>
           <div className="user-statistics-checklists card border-neutral-gray-200" style={{ width: 'fit-content' }}>
-            <h4 className="neutral-gray-800">Number of checklists in use</h4>
+            <h4 className="neutral-gray-800">Number of Kan-Ban in use</h4>
             <h3 className="neutral-gray-400">feature under development ⚙️</h3>
           </div>
         </div>
