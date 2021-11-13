@@ -9,13 +9,6 @@ const HomeViewTopHeaderWrapperStyle = {
 	justifyContent: 'space-between'
 };
 
-const CTAButtonsWrapper = {
-	display: 'flex',
-	flexDirection: 'row',
-	alignItems: 'center',
-	gap: '0.8em'
-}
-
 export default function Checklists() {
 	return (
 		<div className="view checklists">
@@ -29,7 +22,9 @@ export default function Checklists() {
 			</div>
 			{/* recent checklists section */}
 			<div className="recent-checklists-section m-top-5">
-				<p className="recent-checklists-title neutral-gray-500">Recently created checklists</p>	
+				<p className="recent-checklists-title neutral-gray-500">
+					All of your created Checklists
+				</p>
 				<div className="recent-checklists-wrapper">
 					<RecentlyCreatedChecklists />
 				</div>
