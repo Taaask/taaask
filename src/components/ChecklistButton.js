@@ -29,7 +29,7 @@ export default function ChecklistButton(__ChecklistButtonDataObject) {
     >Open</button>
       <ReactModal
         isOpen={checklistTaskModalState}
-        onRequestClose={checklistTaskModalState}
+        onRequestClose={() => setChecklistTaskModalState(false)}
         style={{
           overlay: {
             backgroundColor: 'var(--color-purple-700)'
