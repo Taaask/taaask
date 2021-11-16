@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ReactModal from 'react-modal';
+import Modal from 'react-modal';
 import ChecklistTasks from "./modals/ChecklistTasks";
 
 // styling objects
@@ -12,10 +12,9 @@ const RecentChecklistButtonStyle = {
 
 export default function ChecklistButton(__ChecklistButtonDataObject) {
   const [checklistTaskModalState, setChecklistTaskModalState] = useState(false);
+
   return (
-    <button className="outline-btn recent-checklist-button border-color-white color-purple-900 shadow"
-      onClick={() => setChecklistTaskModalState(true)}
-    >
+    <div>
       <div className="recent-checklist-button__inner-content p-top-2 p-bottom-2"
         style={RecentChecklistButtonStyle}
       >
@@ -25,9 +24,12 @@ export default function ChecklistButton(__ChecklistButtonDataObject) {
         <RenderChecklistLabels 
           checklist_labels={__ChecklistButtonDataObject.checklist_labels} />
       </div>
-      <ReactModal
+      <button className="outline-btn recent-checklist-button border-color-white color-purple-900 shadow"
+      onClick={() => setChecklistTaskModalState(true)}
+    >Open</button>
+      <Modal
         isOpen={checklistTaskModalState}
-        onRequestClose={() => setChecklistTaskModalState(false)}
+        onRequestClose={checklistTaskModalState}
         style={{
           overlay: {
             backgroundColor: 'var(--color-purple-700)'
@@ -52,8 +54,8 @@ export default function ChecklistButton(__ChecklistButtonDataObject) {
         >
           Back
         </button>
-      </ReactModal>
-    </button>
+      </Modal>
+    </div>
   )
 }
 
