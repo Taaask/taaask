@@ -74,7 +74,15 @@ export default function ChecklistTasks(__ChecklistDetails) {
           >
             <button className="primary-btn bg-color-purple-900"
               onClick={() => {
-                setEditChecklistDetailsModeState('no-edit-mode');
+                if (checklistTitle === ''
+                  || checklistTitle === null
+                  || checklistTitle === undefined
+                  || checklistTitle === ' '
+                ) {
+                  alert('Please give this checklist a title');
+                } else {
+                  setEditChecklistDetailsModeState('no-edit-mode');
+                }
               }}
             >Save changes</button>
             <button className="outline-btn border-color-purple-900 color-purple-900"

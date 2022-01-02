@@ -29,9 +29,26 @@ function saveChecklistTodoData(dataToStore) {
 function getDataFromLocalStorage(dataLocation) {
   return JSON.parse(localStorage.getItem(dataLocation));
 }
-
+function saveUserDetails(userData) {
+  if (!userData) return false;
+  
+  let localStorageUserDetailsData;
+  if (localStorage.getItem('user-details') === null) {
+    localStorageUserDetailsData = [];
+  } else {
+    localStorageUserDetailsData = JSON.parse(localStorage.getItem('user-details'));
+  }
+  localStorageUserDetailsData.push(userData);
+  localStorage.setItem('user-details', JSON.stringify(localStorageUserDetailsData));
+  return true;
+}
+function getUserDetails() {
+  return JSON.parse(localStorage.getItem('user-details'));
+}
 export {
   saveChecklistData,
   saveChecklistTodoData,
-  getDataFromLocalStorage
+  getDataFromLocalStorage,
+  saveUserDetails,
+  getUserDetails
 }
