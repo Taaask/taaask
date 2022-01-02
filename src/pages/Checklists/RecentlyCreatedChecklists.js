@@ -31,7 +31,7 @@ export default function RecentlyCreatedChecklists() {
           onClick={() => setCreateNewChecklistModalState(true)}
         >
           <div className="create-new-button-inner-content">
-            ➕ New Checklist
+            Create a checklist
           </div>
         </button>
       <div className="recent-checklists-wrapper m-top-5">
@@ -118,7 +118,6 @@ export default function RecentlyCreatedChecklists() {
 // }
 
 function RenderRecentChecklistsData(__RecentChecklistsObject) {
-  console.log(__RecentChecklistsObject.checklistData)
   if (__RecentChecklistsObject.checklistData === null) {
     return (
       <h3 className="neutral-gray-400 m-x-auto" style={{ width: 'fit-content' }}>You don't have any recently created checklist. Create a new checklist now 🚀</h3>
